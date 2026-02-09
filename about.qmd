@@ -2,8 +2,5 @@
 title: "About"
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+Introduction:  
+Hi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. [i have no clue what I am doing with life so I am exploring my options and always trying new things.]

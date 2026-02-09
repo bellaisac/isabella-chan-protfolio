@@ -1,11 +1,24 @@
 ---
-title: "isabella-chan-protfolio"
+title: "Isabella Chan"
+about:
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/bellaisac
+    - icon: github
+      text: Github
+      href: https://github.com/bellaisac
 ---
 
-This is a Quarto website.
+Isabella Chan is a second year marine science major and a statistics minor at California State University, Monterey Bay
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Education
 
-```{r}
-1 + 1
-```
+California State University, Monterey Bay | Marina, CA  
+B.S. in Marine Science | 2024-2028 (hopefully)
+
+## Experience
+
+CSUMB Mathematics and Statistics | Instructional Student Assistant | January 2025 - present

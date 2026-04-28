@@ -1,0 +1,156 @@
+---
+title: "Comparative Analysis of Alpha Diversity in California Kelp Forest between Marine Protected Areas and Non Marine Protected Areas"
+execute: 
+  echo: true
+  error: true
+code-fold: true
+code-tools: true
+toc: true
+toc-depth: 2
+theme: sandstone
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(vegan)
+library(ggpubr)
+```
+
+
+## Data Description
+
+Data source.  
+
+>  It is a kelp forest data from the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) (https://www.piscoweb.org/) doi:https://doi.org/10.6085/AA/pisco_subtidal.161.2 
+
+Describe your data, including variables and data types.
+
+```{r}
+#| include: false
+fish <- read_csv("Data/1_PISCO_Fish_bysite.csv")
+invert <- read_csv("Data/2_PISCO_SwathInvert_bysite.csv")
+```
+
+
+> 1_PISCO_Fish_bysite.csv includes:  
+categorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.  
+numeric variables: LATITUDE, LONGITUDE, fishtrans, fish_XXXX (average biomass across transects per site per year for different fish species)  
+
+> 2_PISCO_SwathInvert_bysite.csv includes  
+categorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.  
+numeric variables: LATITUDE, LONGITUDE, fishtrans, swath_XXXX (average biomass across transects per site per year for different invertebrates species)  
+
+Research question:   
+
+> How does species biodiversity differ between Marine protected areas (MPA) and non Marine protected areas (reference)? 
+
+
+## Data Visualization
+
+What do you want your final visualizations to look like?  
+
+> Boxplots for MPAs and non MPAs, measuring species diversity using different metrics.
+
+What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?  
+
+> I want to highlight if the differences observed is significant or not. I plan to include astrids that represents the p-value.
+
+What is missing from your data or would need to change in your data to create these visualizations?  
+
+> The data are in two separate dataset. It includes the average biomass across transects per site per year for each species, but not species diversity calculated using different metrics for each sites per year.
+
+
+## Data Cleaning
+
+The answer to at least three of these questions should be “YES” for the data to meet the necessary standards to demonstrate your cleaning. Your data source should not be an already perfectly prepared data set.
+
+ + Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?   
+ *Some variables are probably not the right type*
+ + Do you need to filter your data? How?   
+ *Dataset contains data from *
+ + Do you need to create any new variables? What variables? How?  
+ *yea I need to calculate the diversity using all species observed using the package `vegan`*
+ + Do you need to add new data (join) to your data? What data? How?   
+ *I need to join the fish and invertebrate data together*
+ + Do you need pivot your data in any way? Why? How?  
+ *I need to pivot the data to longer for calculation and data visualizations*
+ + Do you need to summarize any of the variables? Which ones? How?  
+ *I need to summarize all swath species and fish species*
+ + What other aspects of your data need to be “fixed” in order to make your data visualizations?   
+ *I want to use stat_compare_means to show the statistical significance on the graph*
+
+Most will answer yes to the following for making your programming more efficient using select(), but you should have three other yeses above.
+
+ + Are there any variables you can exclude from your data?  
+ *I can exclude the latitude and longtitude*
+
+```{r join and clean}
+big <- fish |> 
+  full_join(invert, by = join_by(SITE))
+
+big.clean <- big|> 
+  select(c(SITE, LATITUDE.x, site_status.x, year.x, fish_CPUN:swath_TEST), -c(LATITUDE.y:swathtrans)) |> 
+  filter(LATITUDE.x < 37) |> 
+  drop_na(site_status.x) 
+
+big.long <- big.clean |> 
+  pivot_longer(cols = fish_CPUN:swath_TEST,
+               names_to = "species",
+               values_to = "Value") |> 
+  group_by(SITE, site_status.x) |>  
+  summarise(Observed = specnumber(Value),
+            Shannon = diversity(Value, index = "shannon"),
+            InvSimpson = diversity(Value, index = "inv"),
+            Biomass = sum(Value)) |> 
+  pivot_longer(cols = Observed: Biomass,
+               names_to = "metrics",
+               values_to = "value")
+
+big.year <- big.clean |> 
+  pivot_longer(cols = fish_CPUN:swath_TEST,
+               names_to = "species",
+               values_to = "Value") |> 
+  group_by(SITE, site_status.x, year.x) |>  
+  summarise(Observed = specnumber(Value))
+  
+
+```
+
+## Part 2
+
+```{r alpha div}
+ggplot(big.long,
+       aes(x = site_status.x,
+           y = value,
+           color = site_status.x)) +
+  geom_boxplot() +
+  facet_wrap(vars(metrics), nrow = 1, scales = "free_y") +
+  stat_compare_means(method = "wilcox.test",
+                     comparisons = list(c("MPA", "reference")),
+                     method.args = list(alternative = "greater"),
+                     label = "p.signif",
+                     symnum.args = list(cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
+                                        symbols = c("****", "***", "**", "*", "ns"))) +
+  labs(y = "Alpha Diversity Measures",
+       x = "Site Status",
+       title = "Alpha Diversity in MPAs and non MPAs") +
+  theme(legend.position = "none")
+```
+
+```{r year}
+ggplot(big.year) + 
+  geom_col(aes(x = year.x,
+               y = Observed,
+               fill = site_status.x)) +
+  facet_wrap(vars(site_status.x)) +
+  labs(x = "Year",
+       y = "Species Count",
+       title = "Number of Fish and Invertebrates Species Across Year") +
+  theme(legend.position = "none")
+
+
+```
+
+
+

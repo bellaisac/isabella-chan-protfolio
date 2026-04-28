@@ -10,6 +10,8 @@ website:
         text: "Home"
       - href: about.qmd
         text: "About Me"
+      - href: Kelp.qmd
+        text: "Kelp Project"
 format:
   html:
     theme: sandstone

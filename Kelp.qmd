@@ -25,8 +25,8 @@ Describe your data, including variables and data types.
 
 ```{r read data}
 #| include: false
-fish <- read_csv("Data/1_PISCO_Fish_bysite.csv")
-invert <- read_csv("Data/2_PISCO_SwathInvert_bysite.csv")
+fish <- read_csv("portfolio-project/data/1_PISCO_Fish_bysite.csv")
+invert <- read_csv("portfolio-project/data/2_PISCO_SwathInvert_bysite.csv")
 ```
 
 
@@ -71,7 +71,8 @@ big.long <- big.clean |>
             Biomass = sum(Value)) |> 
   pivot_longer(cols = Observed: Biomass,
                names_to = "metrics",
-               values_to = "value")
+               values_to = "value") |> 
+  drop_na()
 
 big.year <- big.clean |> 
   pivot_longer(cols = fish_CPUN:swath_TEST,
@@ -81,8 +82,8 @@ big.year <- big.clean |>
   summarise(Observed = specnumber(Value)) |> 
   drop_na()
   
-write.csv(big.clean, file = "data/data-clean/clean-fish-and-invert.csv")
-write.csv(big.long, file = "Data/data-clean/clean-alpha-div.csv")
+write.csv(big.clean, file = "portfolio-project/data/data-clean/clean-fish-and-invert.csv")
+write.csv(big.long, file = "portfolio-project/Data/data-clean/clean-alpha-div.csv")
 ```
 
 

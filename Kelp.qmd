@@ -30,11 +30,12 @@ invert <- read_csv("portfolio-project/data/2_PISCO_SwathInvert_bysite.csv")
 ```
 
 
-> 1_PISCO_Fish_bysite.csv includes:  
+> 1_PISCO_Fish_bysite.csv, average biomass across transects for different fish species in kelp forest.  
+includes:  
 categorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.  
 numeric variables: LATITUDE, LONGITUDE, fishtrans, fish_XXXX (average biomass across transects per site per year for different fish species)  
 
-> 2_PISCO_SwathInvert_bysite.csv includes  
+> 2_PISCO_SwathInvert_bysite.csv average biomass across transects for different invertebrates species in kelp forest.  includes  
 categorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.  
 numeric variables: LATITUDE, LONGITUDE, fishtrans, swath_XXXX (average biomass across transects per site per year for different invertebrates species)  
 
@@ -46,9 +47,9 @@ Research question:
 
 ## Data Cleaning
 
-> Joined the fish data and invertebrates data together, limit the variables to the ones I need and limit so there is only data in California kelp forest, and drop NAs.   
+> Combined the two csv together, select only the variables I need and limit location so the data is only about kelp forests in California. Removes all NAs. 
 I then added columns that calculate the alpha diversity using different metrics and changed the data format so it is easier to use in the following data visualizations.   
-I also grouped the clean data and summarize it across year using only species number.
+I also summarized the data across year using only species number.
 
 
 ```{r join and clean}
@@ -60,6 +61,7 @@ big.clean <- big|>
   filter(LATITUDE.x < 37) |> 
   drop_na(site_status.x) 
 
+# set up for alpha diversity graph
 big.long <- big.clean |> 
   pivot_longer(cols = fish_CPUN:swath_TEST,
                names_to = "species",
@@ -74,36 +76,33 @@ big.long <- big.clean |>
                values_to = "value") |> 
   drop_na()
 
+# set up for line graph across year
 big.year <- big.clean |> 
   pivot_longer(cols = fish_CPUN:swath_TEST,
                names_to = "species",
                values_to = "Value") |> 
-  group_by(SITE, site_status.x, year.x) |>  
-  summarise(Observed = specnumber(Value)) |> 
+  group_by(site_status.x, year.x) |>  
+  summarise(Observed = mean(specnumber(Value))) |> 
   drop_na()
-  
+
+# pivit_longer was repeated while cleaning because both analysis happened to use a summary of the species diversity/ species count. I did not move pivot_longer under the dataframe big.clean since I wanted the big.clean data to resembles the format of the original csv (contained columns of all fish and invertebrates species). It is useful for future analysis like relative abundance of each species.
+
 write.csv(big.clean, file = "portfolio-project/data/data-clean/clean-fish-and-invert.csv")
 write.csv(big.long, file = "portfolio-project/Data/data-clean/clean-alpha-div.csv")
+write.csv(big.year, file = "portfolio-project/Data/data-clean/clean-avg-year.csv")
 ```
 
 
-## Data Visualization
+## Data Visualization  
+### Background  
+> Kelp forests are important biodiversity hotspots that provide numerous ecosystem services, however, they are negatively impacted by climate change, overharvesting, and disturbance from human activities. Marine protected areas (MPAs) limit human activities in important systems and as a result, they could increase species diversity. This study seeks to analyze the effectiveness of MPAs by determining if there is a significant difference in invertebrates and fish diversity in California kelp forests.  
 
-What do you want your final visualizations to look like?  
-
-> Boxplots for MPAs and non MPAs, measuring species diversity using different metrics.
-
-What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?  
-
-> I want to highlight if the differences observed is significant or not. I plan to include astrids that represents the p-value.
-
-What is missing from your data or would need to change in your data to create these visualizations?  
-
-> The data are in two separate dataset. It includes the average biomass across transects per site per year for each species, but not species diversity calculated using different metrics for each sites per year.
+### Visualization 1: Boxplots of Alpha Diversity  
+> Boxplot comparing alpha diversity (within-diversity) in MPAs and in non MPAs (reference) using four different metrics. I want to highlight if the differences observed is significant or not. I added astrids that represents the p-value, showing how statistically significant the differences are. Alpha diversity of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs are significantly different across all metrics. MPA have higher species diversity compared to non MPAs.
 
 
 ```{r alpha div}
-#| fig-alt: "boxplot comparing alpha diversity in MPAs and in non MPAs (reference) using (i) total biomass (ii) Inverse Simpson diversity index (iv) Observed and (iv) Shannon diversity index. MPA has higher diversity across all metrics"
+#| fig-alt: "boxplots comparing alpha diversity in MPAs (colored green) and in non MPAs (reference) (colored red) using (i) total biomass (ii) Inverse Simpson diversity index (iv) Observed and (iv) Shannon diversity index. Overall, MPA has higher diversity across all metrics. Biomass and Inverse Simpson diversity index shows statistically significant difference with p-value less than or equal to 0.05, represented by a single astrid. Observed and Shannon diversity index shows statistically significant differences with p-value less than or equal to 0.01, represented by two astrids"
 #| fig-cap: "Figure 1. Alpha diversity analysis of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs. Alpha diversity was measured using (i) total biomass (ii) Inverse Simpson diversity index (iv) Observed and (iv) Shannon diversity index. Statistical significance was determined using the Wilcoxon signed rank test (p-values: ns = not significant, * = 0.05, ** = 0.01)"
 ggplot(big.long,
        aes(x = site_status.x,
@@ -125,19 +124,19 @@ ggplot(big.long,
   theme_bw() + 
   theme(legend.position = "none")
 ```
-> Alpha diversity of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs are significantly different across all metrics. MPA have higher species diversity compared to non MPAs.
+
+### Visualization 2: Line graph comparing species number across year  
+
+> Line graph comparing average species count across site across years in MPAs (colored green) and non MPAs(reference) (colored red). The average number of fish and invertebrates species in MPAs and non MPAs varied across years, however, MPAs have higher species count in all years. Showed in the graph as the green line was above the red line across all years. This shows that MPAs are rather effective in protecting species diversity in kelp forests in California.  
 
 
 ```{r species num across year}
-#| fig-alt: "Line graph comparing species count across site in each year in MPAs and non MPAs(reference). MPAs have higher species count in all years"
+#| fig-alt: "Line graph comparing species count across site in each year in MPAs (colored green) and non MPAs(reference) (colored red). The average number of fish and invertebrates species in MPAs and non MPAs varied across years, possibly due to other factors like El Nino and local upwelling events. However, MPAs have higher species count in all years. The green line (MPA) is above the red line (non MPAs) across all years."
 #| fig-cap: "Figure2. Line graph comparing species count across site in each year in MPAs and non MPAs(reference). MPAs have higher species count in all years"
-big.year.sum <- big.year |> 
-  group_by(year.x, site_status.x) |> 
-  summarize(obs.mean = mean(Observed), .groups = "drop_last")
 
-ggplot(big.year.sum) + 
+ggplot(big.year) + 
   geom_line(aes(x = year.x,
-              y = obs.mean,
+              y = Observed,
               color = site_status.x,
               group = site_status.x)) +
   
@@ -148,8 +147,10 @@ ggplot(big.year.sum) +
                                 "reference" = "indianred2")) +
   theme_bw()
 
-
 ```
-> MPA has higher number of species of fish and invertebrates compared to non MPAs across all years. 
+
+## Future work  
+> The types of MPAs and common activities in site could influence the ability of MPAs to conserve invertebrates species richness. Contrary to common misconceptions, most MPAs allow boats to enter and humans to engage in recreation activities like swimming and snorkeling. Boating and shore use resulted in consistently negative and significant ecological impacts while angling and swimming had minimal effects on invertebrates. This analysis did not take into account the types of MPAs, or common human activities for each site. The level of protection could have an effect on the conservation of diversity in invertebrates. In addition, only a few species are targeted for fisheries for human consumption purposes. This study did not identify these species. Future analysis could identify how the abundance of these species differ in MPAs and non MPAs, and how much did they contribute to the overall species diversity.
+
 
 

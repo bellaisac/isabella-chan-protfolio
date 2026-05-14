@@ -11,7 +11,7 @@ website:
       - href: about.qmd
         text: "About Me"
       - href: portfolio-project/Kelp.qmd
-        text: "Kelp Project"
+        text: "Protfolio Project"
 format:
   html:
     theme: sandstone

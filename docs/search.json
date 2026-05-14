@@ -23,35 +23,35 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Me",
     "section": "",
-    "text": "Introduction:\nHi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. [i have no clue what I am doing with life so I am exploring my options and always trying new things.]"
+    "text": "Introduction:\nHi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. I am currently exploring different areas of marine science through classes and research projects. Through this process, I have found myself drawn to molecular work and data analysis. I am especially interested in studying how ecosystems respond to the increasing frequency of extreme climate events. I am interested in quantitative marine science focusing on accurately model future ecological trends in complex and dynamic ecosystems with numerous interconnected biotic and abiotic factors.\nResearch:"
   },
   {
     "objectID": "Kelp.html",
     "href": "Kelp.html",
-    "title": "Comparative Analysis of Alpha Diversity in California Kelp Forest between Marine Protected Areas and Non Marine Protected Areas",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
     "section": "",
     "text": "Data source:\n\nIt is a kelp forest data from the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) (https://www.piscoweb.org/) doi:https://doi.org/10.6085/AA/pisco_subtidal.161.2\n\nDescribe your data, including variables and data types.\n\n1_PISCO_Fish_bysite.csv includes:\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, fish_XXXX (average biomass across transects per site per year for different fish species)\n\n\n2_PISCO_SwathInvert_bysite.csv includes\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, swath_XXXX (average biomass across transects per site per year for different invertebrates species)\n\nResearch question:\n\nHow does species biodiversity differ between Marine protected areas (MPA) and non Marine protected areas (reference)?"
   },
   {
     "objectID": "Kelp.html#data-description",
     "href": "Kelp.html#data-description",
-    "title": "Comparative Analysis of Alpha Diversity in California Kelp Forest between Marine Protected Areas and Non Marine Protected Areas",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
     "section": "",
     "text": "Data source:\n\nIt is a kelp forest data from the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) (https://www.piscoweb.org/) doi:https://doi.org/10.6085/AA/pisco_subtidal.161.2\n\nDescribe your data, including variables and data types.\n\n1_PISCO_Fish_bysite.csv includes:\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, fish_XXXX (average biomass across transects per site per year for different fish species)\n\n\n2_PISCO_SwathInvert_bysite.csv includes\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, swath_XXXX (average biomass across transects per site per year for different invertebrates species)\n\nResearch question:\n\nHow does species biodiversity differ between Marine protected areas (MPA) and non Marine protected areas (reference)?"
   },
   {
     "objectID": "Kelp.html#data-visualization",
     "href": "Kelp.html#data-visualization",
-    "title": "Comparative Analysis of Alpha Diversity in California Kelp Forest between Marine Protected Areas and Non Marine Protected Areas",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
     "section": "Data Visualization",
-    "text": "Data Visualization\nWhat do you want your final visualizations to look like?\n\nBoxplots for MPAs and non MPAs, measuring species diversity using different metrics.\n\nWhat do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?\n\nI want to highlight if the differences observed is significant or not. I plan to include astrids that represents the p-value.\n\nWhat is missing from your data or would need to change in your data to create these visualizations?\n\nThe data are in two separate dataset. It includes the average biomass across transects per site per year for each species, but not species diversity calculated using different metrics for each sites per year.\n\n\n\n\n\n\nFigure 1. Alpha diversity analysis of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs. Alpha diversity was measured using (i) total biomass (ii) Inverse Simpson diversity index (iv) Observed and (iv) Shannon diversity index. Statistical significance was determined using the Wilcoxon signed rank test (p-values: ns = not significant, * = 0.05, ** = 0.01)\n\n\n\n\n\n\n\n\n\nFigure2. Bar chart comparing species count across site in each year in MPAs and non MPAs(reference). MPAs have higher species count in all years"
+    "text": "Data Visualization\nWhat do you want your final visualizations to look like?\n\nBoxplots for MPAs and non MPAs, measuring species diversity using different metrics.\n\nWhat do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?\n\nI want to highlight if the differences observed is significant or not. I plan to include astrids that represents the p-value.\n\nWhat is missing from your data or would need to change in your data to create these visualizations?\n\nThe data are in two separate dataset. It includes the average biomass across transects per site per year for each species, but not species diversity calculated using different metrics for each sites per year.\n\n\n\n\n\n\nFigure 1. Alpha diversity analysis of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs. Alpha diversity was measured using (i) total biomass (ii) Inverse Simpson diversity index (iv) Observed and (iv) Shannon diversity index. Statistical significance was determined using the Wilcoxon signed rank test (p-values: ns = not significant, * = 0.05, ** = 0.01)\n\n\n\n\n\nAlpha diversity of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs are significantly different across all metrics. MPA have higher species diversity compared to non MPAs.\n\n\n\n\n\n\nFigure2. Line graph comparing species count across site in each year in MPAs and non MPAs(reference). MPAs have higher species count in all years\n\n\n\n\n\nMPA has higher number of species of fish and invertebrates compared to non MPAs across all years."
   },
   {
     "objectID": "Kelp.html#data-cleaning",
     "href": "Kelp.html#data-cleaning",
-    "title": "Comparative Analysis of Alpha Diversity in California Kelp Forest between Marine Protected Areas and Non Marine Protected Areas",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
     "section": "Data Cleaning",
     "text": "Data Cleaning\n\nJoined the fish data and invertebrates data together, limit the variables to the ones I need and limit so there is only data in California kelp forest, and drop NAs.\nI then added columns that calculate the alpha diversity using different metrics and changed the data format so it is easier to use in the following data visualizations.\nI also grouped the clean data and summarize it across year using only species number."
   },
@@ -110,5 +110,12 @@
     "title": "About",
     "section": "",
     "text": "Hi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. I am currently exploring different areas of marine science through classes and research projects. Through this process, I have found myself drawn to molecular work and data analysis. I am especially interested in studying how ecosystems respond to the increasing frequency of extreme climate events. I am interested in quantitative marine science focusing on accurately model future ecological trends in complex and dynamic ecosystems with numerous interconnected biotic and abiotic factors."
+  },
+  {
+    "objectID": "about.html#research",
+    "href": "about.html#research",
+    "title": "About",
+    "section": "Research",
+    "text": "Research"
   }
 ]

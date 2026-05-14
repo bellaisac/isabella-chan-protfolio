@@ -81,8 +81,8 @@ big.year <- big.clean |>
   summarise(Observed = specnumber(Value)) |> 
   drop_na()
   
-write.csv(big.clean, file = "data/data-clean/clean-fish-and-invert.csv")
-write.csv(big.long, file = "Data/data-clean/clean-alpha-div.csv")
+write.csv(big.clean, file = "Data/clean-fish-and-invert.csv")
+write.csv(big.long, file = "Data/clean-alpha-div.csv")
 ```
 
 

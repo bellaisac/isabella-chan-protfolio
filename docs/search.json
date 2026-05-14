@@ -107,15 +107,50 @@
   {
     "objectID": "about.html#introduction",
     "href": "about.html#introduction",
-    "title": "About",
+    "title": "About Me",
     "section": "",
     "text": "Hi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. I am currently exploring different areas of marine science through classes and research projects. Through this process, I have found myself drawn to molecular work and data analysis. I am especially interested in studying how ecosystems respond to the increasing frequency of extreme climate events. I am interested in quantitative marine science focusing on accurately model future ecological trends in complex and dynamic ecosystems with numerous interconnected biotic and abiotic factors."
   },
   {
     "objectID": "about.html#research",
     "href": "about.html#research",
-    "title": "About",
-    "section": "Research",
-    "text": "Research"
+    "title": "About Me",
+    "section": "Research:",
+    "text": "Research:\n\nBonnethead Shark Microbiome\nBonnethead Sharks are omnivores, they have been observed eating seagrass and other algae. Male and female bonnethead sharks have different headshapes and distinct foraging behaviors, potentially driven by the female’s larger size or differing metabolic needs.\nWe aim to analyze the difference in their gut microbiomes to learn more about their diets.\n\n\nCoral RNA Extraction\nExtracting high-quality RNA from corals is difficult due to their physical toughness and calcium inhibition, corals possess thick mucus layers and tough tissues (mesoglea) that require specialized lysis methods to break down and their calcium carbonate skeleton is a potent inhibitor of downstream enzymes, which must be completely removed during purification.\nThe objective of the project is to optimize the protocol for RNA isolation on scleractinian corals in order to generate high quality RNA for next generation sequencing (NGS) applications. We will clean low-quality RNA with the Zymo RNA Clean and Concentrate Kit, and determine whether or not using the kit increases RNA quality and quantity."
+  },
+  {
+    "objectID": "portfolio-project/Kelp.html",
+    "href": "portfolio-project/Kelp.html",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
+    "section": "",
+    "text": "Data source:\n\nIt is a kelp forest data from the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) (https://www.piscoweb.org/) doi:https://doi.org/10.6085/AA/pisco_subtidal.161.2\n\nDescribe your data, including variables and data types.\n\n1_PISCO_Fish_bysite.csv includes:\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, fish_XXXX (average biomass across transects per site per year for different fish species)\n\n\n2_PISCO_SwathInvert_bysite.csv includes\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, swath_XXXX (average biomass across transects per site per year for different invertebrates species)\n\nResearch question:\n\nHow does species biodiversity differ between Marine protected areas (MPA) and non Marine protected areas (reference)?"
+  },
+  {
+    "objectID": "portfolio-project/Kelp.html#data-description",
+    "href": "portfolio-project/Kelp.html#data-description",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
+    "section": "",
+    "text": "Data source:\n\nIt is a kelp forest data from the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) (https://www.piscoweb.org/) doi:https://doi.org/10.6085/AA/pisco_subtidal.161.2\n\nDescribe your data, including variables and data types.\n\n1_PISCO_Fish_bysite.csv includes:\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, fish_XXXX (average biomass across transects per site per year for different fish species)\n\n\n2_PISCO_SwathInvert_bysite.csv includes\ncategorical variables: SITE, MPAGroup, site_designation, site_status, MLPA_REGN, YEAR_MPA, year.\nnumeric variables: LATITUDE, LONGITUDE, fishtrans, swath_XXXX (average biomass across transects per site per year for different invertebrates species)\n\nResearch question:\n\nHow does species biodiversity differ between Marine protected areas (MPA) and non Marine protected areas (reference)?"
+  },
+  {
+    "objectID": "portfolio-project/Kelp.html#data-cleaning",
+    "href": "portfolio-project/Kelp.html#data-cleaning",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\nJoined the fish data and invertebrates data together, limit the variables to the ones I need and limit so there is only data in California kelp forest, and drop NAs.\nI then added columns that calculate the alpha diversity using different metrics and changed the data format so it is easier to use in the following data visualizations.\nI also grouped the clean data and summarize it across year using only species number."
+  },
+  {
+    "objectID": "portfolio-project/Kelp.html#data-visualization",
+    "href": "portfolio-project/Kelp.html#data-visualization",
+    "title": "Comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA",
+    "section": "Data Visualization",
+    "text": "Data Visualization\nWhat do you want your final visualizations to look like?\n\nBoxplots for MPAs and non MPAs, measuring species diversity using different metrics.\n\nWhat do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?\n\nI want to highlight if the differences observed is significant or not. I plan to include astrids that represents the p-value.\n\nWhat is missing from your data or would need to change in your data to create these visualizations?\n\nThe data are in two separate dataset. It includes the average biomass across transects per site per year for each species, but not species diversity calculated using different metrics for each sites per year.\n\n\n\n\n\n\nFigure 1. Alpha diversity analysis of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs. Alpha diversity was measured using (i) total biomass (ii) Inverse Simpson diversity index (iv) Observed and (iv) Shannon diversity index. Statistical significance was determined using the Wilcoxon signed rank test (p-values: ns = not significant, * = 0.05, ** = 0.01)\n\n\n\n\n\nAlpha diversity of invertebrates and fish species among Marine Protected Areas (MPA) and non MPAs are significantly different across all metrics. MPA have higher species diversity compared to non MPAs.\n\n\n\n\n\n\nFigure2. Line graph comparing species count across site in each year in MPAs and non MPAs(reference). MPAs have higher species count in all years\n\n\n\n\n\nMPA has higher number of species of fish and invertebrates compared to non MPAs across all years."
+  },
+  {
+    "objectID": "about.html#projects",
+    "href": "about.html#projects",
+    "title": "About Me",
+    "section": "Projects",
+    "text": "Projects\n\nKelp\nA project for STAT210\nDemonstrate data cleaning and data visualization through conducting a comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA\nMPA limits human activities. Marine protected areas (MPAs) limit human activities in important systems and as a result, they could increase species diversity. This study seeks to determine if there is a significant difference in invertebrates and fish diversity by comparing the Alpha diversity (within diversity) between sites in MPAs and in non MPAs (reference) through data collected by the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) program. Invertebrate and fish diversity was higher in MPAs across all indexs. Therefore, MPAs are able to promote species diversity for certain aspects. They maintain healthy kelp forests and prevent urchin barren, as well as build resilience against climate change in ecosystems and promote better recovery after disturbance."
   }
 ]

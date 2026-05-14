@@ -3,9 +3,23 @@ title: "About Me"
 embed-resources: true
 ---
 
-Introduction:    
+## Introduction:    
 Hi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. 
 I am currently exploring different areas of marine science through classes and research projects. Through this process, I have found myself drawn to molecular work and data analysis. I am especially interested in studying how ecosystems respond to the increasing frequency of extreme climate events. I am interested in quantitative marine science focusing on accurately model future ecological trends in complex and dynamic ecosystems with numerous interconnected biotic and abiotic factors.
 
-Research: 
+## Research:   
+### Bonnethead Shark Microbiome  
+Bonnethead Sharks are omnivores, they have been observed eating seagrass and other algae. Male and female bonnethead sharks have different headshapes and distinct foraging behaviors, potentially driven by the female's larger size or differing metabolic needs.  
+We aim to analyze the difference in their gut microbiomes to learn more about their diets.
+
+### Coral RNA Extraction
+Extracting high-quality RNA from corals is difficult due to their physical toughness and calcium inhibition, corals possess thick mucus layers and tough tissues (mesoglea) that require specialized lysis methods to break down and their calcium carbonate skeleton is a potent inhibitor of downstream enzymes, which must be completely removed during purification.  
+The objective of the project is to optimize the protocol for RNA isolation on scleractinian corals in order to generate high quality RNA for next generation sequencing (NGS) applications. We will clean low-quality RNA with the Zymo RNA Clean and Concentrate Kit, and determine whether or not using the kit increases RNA quality and quantity.
+
+## Projects
+### Kelp  
+A project for STAT210  
+Demonstrate data cleaning and data visualization through conducting a comparative Analysis of Alpha Diversity Kelp Forest MPA vs non MPA  
+MPA limits human activities. Marine protected areas (MPAs) limit human activities in important systems and as a result, they could increase species diversity. This study seeks to determine if there is a significant difference in invertebrates and fish diversity by comparing the Alpha diversity (within diversity) between sites in MPAs and in non MPAs (reference) through data collected by the Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO) program. Invertebrate and fish diversity was higher in MPAs across all indexs. Therefore, MPAs are able to promote species diversity for certain aspects. They maintain healthy kelp forests and prevent urchin barren, as well as build resilience against climate change in ecosystems and promote better recovery after disturbance. 
+
 

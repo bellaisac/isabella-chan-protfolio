@@ -2,5 +2,9 @@
 title: "About"
 ---
 
-Introduction:  
-Hi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. [i have no clue what I am doing with life so I am exploring my options and always trying new things.]
+## Introduction:  
+Hi, I am Isabella Chan a second-year marine science major and a statistic minor at California State University, Monterey Bay. 
+I am currently exploring different areas of marine science through classes and research projects. Through this process, I have found myself drawn to molecular work and data analysis. I am especially interested in studying how ecosystems respond to the increasing frequency of extreme climate events. I am interested in quantitative marine science focusing on accurately model future ecological trends in complex and dynamic ecosystems with numerous interconnected biotic and abiotic factors.
+
+
+

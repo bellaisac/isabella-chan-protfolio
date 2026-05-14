@@ -12,13 +12,23 @@ about:
       href: https://github.com/bellaisac
 ---
 
-Isabella Chan is a second year marine science major and a statistics minor at California State University, Monterey Bay
+Hi! I am a second year marine science major and a statistics minor at California State University, Monterey Bay
 
 ## Education
 
 California State University, Monterey Bay | Marina, CA  
-B.S. in Marine Science | 2024-2028 (hopefully)
+B.S. in Marine Science, minor in Statistics| 2024-2028 
+
+## Research
+
+Bonnethead Shark Microbiome  
+CSUMB Symbiosis, Ecology, and Analytics Lab | June 2025 - present
+
+Optimization of the protocol for RNA isolation on scleractinian corals  
+CSUMB UROC | June 2026 - August 2026
 
 ## Experience
 
-CSUMB Mathematics and Statistics | Instructional Student Assistant | January 2025 - present
+CSUMB Mathematics and Statistics |  
+Instructional Student Assistant |   
+January 2025 - present
